@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Healthcare Worker Login | IruUyir AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/shared.css"></head>
+<body><div class="auth-wrap"><canvas id="bg" aria-hidden="true"></canvas><main class="auth-card" id="card">
+<div class="auth-brand">
+    <img src="images/logo.png" alt="IruUyir AI Logo" class="logo">
+
+    <div>
+        <h1>IruUyir AI</h1>
+        <p>Healthcare Worker Login</p>
+    </div>
+</div>
+<div class="form-error" id="error" role="alert"></div>
+<form id="form" novalidate>
+<div class="form-group"><label for="identifier">Healthcare Worker ID / Email</label><input id="identifier" autocomplete="username"></div>
+<div class="form-group"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password"></div>
+<button class="btn btn-primary" id="loginBtn" type="submit">Login</button>
+<button class="btn btn-outline" id="backBtn" type="button">Back</button>
+</form><p class="hint" id="demoHint"></p></main></div><div id="toasts"></div>
+<script src="js/config.js"></script><script src="js/ui.js"></script><script src="js/auth.js"></script><script src="js/mock.js"></script><script src="js/api.js"></script><script src="js/particles.js"></script>
+<script>
+if(Auth.token())location.replace('doctor-dashboard.html');
+if(IRUUYIR_CONFIG.USE_MOCK)document.getElementById('demoHint').textContent='Demo mode: any ID with password demo1234.';
+const $=id=>document.getElementById(id);
+$('backBtn').onclick=()=>UI.go('index.html');
+$('form').addEventListener('submit',async e=>{e.preventDefault();$('error').style.display='none';
+ const identifier=$('identifier').value.trim(),password=$('password').value;
+ if(!identifier||!password){$('error').textContent='Enter your ID/email and password.';$('error').style.display='block';return}
+ UI.busy($('loginBtn'),true,'Signing in');
+ try{const r=await Api.login({identifier,password});Auth.set(r.token,r.user);UI.go('doctor-dashboard.html')}
+ catch(err){UI.busy($('loginBtn'),false);$('error').textContent=err.message;$('error').style.display='block'}});
+</script></body></html>
