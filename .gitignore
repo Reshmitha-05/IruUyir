@@ -1,21 +1,10 @@
-# Python
-__pycache__/
-*.py[cod]
-.venv/
-venv/
-.ipynb_checkpoints/
-.vscode/
-
-# Kaggle data (check each dataset's licence before redistributing)
-data/raw/*.csv
-data/processed/*
-
-# Trained artifacts are tracked by default so the frontend/backend team can
-# use them without retraining. To stop tracking them, uncomment:
-# model1_maternal_risk/artifacts/*
-# model2_fetal_health/artifacts/*
-# !model1_maternal_risk/artifacts/.gitkeep
-# !model2_fetal_health/artifacts/.gitkeep
-
-.DS_Store
 node_modules/
+.env
+data/*.db
+data/*.db-*
+__pycache__/
+*.pyc
+.venv/
+ml_service/models/*.joblib
+ml_service/data/*.csv
+.DS_Store
