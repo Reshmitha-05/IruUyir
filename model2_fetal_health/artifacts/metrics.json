@@ -1,0 +1,79 @@
+{
+  "model": "fetal_health_model",
+  "model_version": "model2-fetal-health-0.1.0-hackathon",
+  "random_state": 42,
+  "test_size": 0.2,
+  "stratified_split": true,
+  "n_train": 1690,
+  "n_test": 423,
+  "rows_dropped_duplicates": 13,
+  "metrics": {
+    "accuracy": 0.9550827423167849,
+    "balanced_accuracy": 0.9021993332338161,
+    "precision_macro": 0.9357847280924204,
+    "recall_macro": 0.9021993332338161,
+    "f1_macro": 0.9174127934606977,
+    "precision_weighted": 0.953862940114986,
+    "recall_weighted": 0.9550827423167849,
+    "f1_weighted": 0.9537331955474394,
+    "classification_report": {
+      "normal": {
+        "precision": 0.9644970414201184,
+        "recall": 0.9878787878787879,
+        "f1-score": 0.9760479041916168,
+        "support": 330.0
+      },
+      "suspect": {
+        "precision": 0.9,
+        "recall": 0.7758620689655172,
+        "f1-score": 0.8333333333333334,
+        "support": 58.0
+      },
+      "pathological": {
+        "precision": 0.9428571428571428,
+        "recall": 0.9428571428571428,
+        "f1-score": 0.9428571428571428,
+        "support": 35.0
+      },
+      "accuracy": 0.9550827423167849,
+      "macro avg": {
+        "precision": 0.9357847280924204,
+        "recall": 0.9021993332338161,
+        "f1-score": 0.9174127934606977,
+        "support": 423.0
+      },
+      "weighted avg": {
+        "precision": 0.953862940114986,
+        "recall": 0.9550827423167849,
+        "f1-score": 0.9537331955474394,
+        "support": 423.0
+      }
+    },
+    "confusion_matrix": {
+      "labels": [
+        "normal",
+        "suspect",
+        "pathological"
+      ],
+      "matrix": [
+        [
+          326,
+          4,
+          0
+        ],
+        [
+          11,
+          45,
+          2
+        ],
+        [
+          1,
+          1,
+          33
+        ]
+      ]
+    }
+  },
+  "note": "Metrics are on a small public dataset test split; they are NOT evidence of clinical performance.",
+  "warning": "Prototype only; not clinically validated; healthcare professional review required."
+}

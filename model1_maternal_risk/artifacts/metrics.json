@@ -1,0 +1,66 @@
+{
+  "model": "maternal_risk_model",
+  "model_version": "model1-maternal-risk-0.1.0-hackathon",
+  "random_state": 42,
+  "test_size": 0.2,
+  "stratified_split": true,
+  "n_train": 857,
+  "n_test": 215,
+  "rows_dropped_duplicates": 115,
+  "urinalysis_status": "kept_separate",
+  "metrics": {
+    "accuracy": 0.9162790697674419,
+    "balanced_accuracy": 0.9087747458533975,
+    "precision_macro": 0.9184008762322016,
+    "recall_macro": 0.9087747458533975,
+    "f1_macro": 0.9127906976744187,
+    "precision_weighted": 0.9167986958404442,
+    "recall_weighted": 0.9162790697674419,
+    "f1_weighted": 0.9157923201730666,
+    "classification_report": {
+      "low": {
+        "precision": 0.9090909090909091,
+        "recall": 0.9523809523809523,
+        "f1-score": 0.9302325581395349,
+        "support": 126.0
+      },
+      "high": {
+        "precision": 0.927710843373494,
+        "recall": 0.8651685393258427,
+        "f1-score": 0.8953488372093024,
+        "support": 89.0
+      },
+      "accuracy": 0.9162790697674419,
+      "macro avg": {
+        "precision": 0.9184008762322016,
+        "recall": 0.9087747458533975,
+        "f1-score": 0.9127906976744187,
+        "support": 215.0
+      },
+      "weighted avg": {
+        "precision": 0.9167986958404442,
+        "recall": 0.9162790697674419,
+        "f1-score": 0.9157923201730666,
+        "support": 215.0
+      }
+    },
+    "confusion_matrix": {
+      "labels": [
+        "low",
+        "high"
+      ],
+      "matrix": [
+        [
+          120,
+          6
+        ],
+        [
+          12,
+          77
+        ]
+      ]
+    }
+  },
+  "note": "Metrics are on a small public dataset test split; they are NOT evidence of clinical performance.",
+  "warning": "Prototype only; not clinically validated; healthcare professional review required."
+}

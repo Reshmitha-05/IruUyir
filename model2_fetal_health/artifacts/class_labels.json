@@ -1,0 +1,19 @@
+{
+  "model": "fetal_health_model",
+  "classes_in_pipeline_order": [
+    "normal",
+    "pathological",
+    "suspect"
+  ],
+  "display_order": [
+    "normal",
+    "suspect",
+    "pathological"
+  ],
+  "label_mapping_original_to_normalized": {
+    "1.0": "normal",
+    "2.0": "suspect",
+    "3.0": "pathological"
+  },
+  "warning": "Prototype only; not clinically validated; healthcare professional review required."
+}

@@ -1,0 +1,17 @@
+{
+  "model": "maternal_risk_model",
+  "classes_in_pipeline_order": [
+    "high",
+    "low"
+  ],
+  "display_order": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "label_mapping_original_to_normalized": {
+    "High": "high",
+    "Low": "low"
+  },
+  "warning": "Prototype only; not clinically validated; healthcare professional review required."
+}
