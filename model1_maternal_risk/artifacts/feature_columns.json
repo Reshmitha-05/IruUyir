@@ -1,0 +1,58 @@
+{
+  "model": "maternal_risk_model",
+  "model_version": "model1-maternal-risk-0.1.0-hackathon",
+  "input_type": "maternal_vitals_and_verified_maternal_tests",
+  "feature_columns": [
+    "age",
+    "systolic_bp",
+    "diastolic_bp",
+    "blood_sugar",
+    "body_temperature",
+    "heart_rate"
+  ],
+  "numeric_columns": [
+    "age",
+    "systolic_bp",
+    "diastolic_bp",
+    "blood_sugar",
+    "body_temperature",
+    "heart_rate"
+  ],
+  "categorical_columns": [],
+  "ranges": {
+    "age": [
+      10,
+      70
+    ],
+    "systolic_bp": [
+      50,
+      250
+    ],
+    "diastolic_bp": [
+      30,
+      150
+    ],
+    "blood_sugar": [
+      1,
+      40
+    ],
+    "body_temperature": [
+      90,
+      110
+    ],
+    "heart_rate": [
+      30,
+      220
+    ]
+  },
+  "units": {
+    "age": "years",
+    "systolic_bp": "mmHg",
+    "diastolic_bp": "mmHg",
+    "blood_sugar": "mmol/L (as in the Kaggle maternal dataset)",
+    "body_temperature": "degrees Fahrenheit (as in the Kaggle maternal dataset)",
+    "heart_rate": "beats per minute"
+  },
+  "target_excluded_from_features": "risk_level",
+  "warning": "Prototype only; not clinically validated; healthcare professional review required."
+}

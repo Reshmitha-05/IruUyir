@@ -1,0 +1,250 @@
+{
+  "maternal_health": {
+    "dataset": "maternal_health",
+    "file_name": "maternal_health.csv",
+    "file_path": "data/raw/maternal_health.csv",
+    "shape": [
+      1205,
+      12
+    ],
+    "original_columns": [
+      "Age",
+      "Systolic BP",
+      "Diastolic",
+      "BS",
+      "Body Temp",
+      "BMI",
+      "Previous Complications",
+      "Preexisting Diabetes",
+      "Gestational Diabetes",
+      "Mental Health",
+      "Heart Rate",
+      "Risk Level"
+    ],
+    "column_name_mapping": {
+      "Age": "age",
+      "Systolic BP": "systolic_bp",
+      "Diastolic": "diastolic",
+      "BS": "bs",
+      "Body Temp": "body_temp",
+      "BMI": "bmi",
+      "Previous Complications": "previous_complications",
+      "Preexisting Diabetes": "preexisting_diabetes",
+      "Gestational Diabetes": "gestational_diabetes",
+      "Mental Health": "mental_health",
+      "Heart Rate": "heart_rate",
+      "Risk Level": "risk_level"
+    },
+    "normalized_columns": [
+      "age",
+      "systolic_bp",
+      "diastolic",
+      "bs",
+      "body_temp",
+      "bmi",
+      "previous_complications",
+      "preexisting_diabetes",
+      "gestational_diabetes",
+      "mental_health",
+      "heart_rate",
+      "risk_level"
+    ],
+    "dtypes": {
+      "age": "int64",
+      "systolic_bp": "float64",
+      "diastolic": "float64",
+      "bs": "float64",
+      "body_temp": "int64",
+      "bmi": "float64",
+      "previous_complications": "float64",
+      "preexisting_diabetes": "float64",
+      "gestational_diabetes": "int64",
+      "mental_health": "int64",
+      "heart_rate": "float64",
+      "risk_level": "str"
+    },
+    "missing_values": {
+      "age": 0,
+      "systolic_bp": 5,
+      "diastolic": 4,
+      "bs": 2,
+      "body_temp": 0,
+      "bmi": 18,
+      "previous_complications": 2,
+      "preexisting_diabetes": 2,
+      "gestational_diabetes": 0,
+      "mental_health": 0,
+      "heart_rate": 2,
+      "risk_level": 18
+    },
+    "duplicate_rows": 18,
+    "target_column": "risk_level",
+    "target_unique_values": [
+      "High",
+      "Low"
+    ],
+    "class_distribution": {
+      "Low": 713,
+      "High": 474,
+      "nan": 18
+    },
+    "candidate_target_columns": {
+      "mental_health": [
+        "0",
+        "1"
+      ],
+      "risk_level": [
+        "High",
+        "Low"
+      ]
+    },
+    "warning": "Prototype only; not clinically validated; healthcare professional review required."
+  },
+  "urinalysis": {
+    "dataset": "urinalysis",
+    "file_name": "urinalysis.csv",
+    "file_path": "data/raw/urinalysis.csv",
+    "shape": [
+      1436,
+      16
+    ],
+    "original_columns": [
+      "Unnamed: 0",
+      "Age",
+      "Gender",
+      "Color",
+      "Transparency",
+      "Glucose",
+      "Protein",
+      "pH",
+      "Specific Gravity",
+      "WBC",
+      "RBC",
+      "Epithelial Cells",
+      "Mucous Threads",
+      "Amorphous Urates",
+      "Bacteria",
+      "Diagnosis"
+    ],
+    "column_name_mapping": {
+      "Unnamed: 0": "unnamed_0",
+      "Age": "age",
+      "Gender": "gender",
+      "Color": "color",
+      "Transparency": "transparency",
+      "Glucose": "glucose",
+      "Protein": "protein",
+      "pH": "ph",
+      "Specific Gravity": "specific_gravity",
+      "WBC": "wbc",
+      "RBC": "rbc",
+      "Epithelial Cells": "epithelial_cells",
+      "Mucous Threads": "mucous_threads",
+      "Amorphous Urates": "amorphous_urates",
+      "Bacteria": "bacteria",
+      "Diagnosis": "diagnosis"
+    },
+    "normalized_columns": [
+      "unnamed_0",
+      "age",
+      "gender",
+      "color",
+      "transparency",
+      "glucose",
+      "protein",
+      "ph",
+      "specific_gravity",
+      "wbc",
+      "rbc",
+      "epithelial_cells",
+      "mucous_threads",
+      "amorphous_urates",
+      "bacteria",
+      "diagnosis"
+    ],
+    "dtypes": {
+      "unnamed_0": "int64",
+      "age": "float64",
+      "gender": "str",
+      "color": "str",
+      "transparency": "str",
+      "glucose": "str",
+      "protein": "str",
+      "ph": "float64",
+      "specific_gravity": "float64",
+      "wbc": "str",
+      "rbc": "str",
+      "epithelial_cells": "str",
+      "mucous_threads": "str",
+      "amorphous_urates": "str",
+      "bacteria": "str",
+      "diagnosis": "str"
+    },
+    "missing_values": {
+      "unnamed_0": 0,
+      "age": 0,
+      "gender": 0,
+      "color": 1,
+      "transparency": 0,
+      "glucose": 0,
+      "protein": 0,
+      "ph": 0,
+      "specific_gravity": 0,
+      "wbc": 0,
+      "rbc": 0,
+      "epithelial_cells": 0,
+      "mucous_threads": 0,
+      "amorphous_urates": 0,
+      "bacteria": 0,
+      "diagnosis": 0
+    },
+    "duplicate_rows": 0,
+    "target_column": null,
+    "target_unique_values": null,
+    "class_distribution": null,
+    "candidate_target_columns": {
+      "transparency": [
+        "CLEAR",
+        "CLOUDY",
+        "HAZY",
+        "SLIGHTLY HAZY",
+        "TURBID"
+      ],
+      "diagnosis": [
+        "NEGATIVE",
+        "POSITIVE"
+      ]
+    },
+    "warning": "Prototype only; not clinically validated; healthcare professional review required."
+  },
+  "urinalysis_decision": {
+    "urinalysis_file": "data/raw/urinalysis.csv",
+    "status": "kept_separate",
+    "reasons": [
+      "no maternal-risk target column (RiskLevel / risk_level / risk) exists in the urinalysis file; its own target (if any) measures something else, so it cannot be mapped to low/medium/high maternal risk",
+      "only 1 maternal feature column(s) shared with the maternal dataset (['age']); at least 4 are required. Merging would create mostly-empty columns"
+    ],
+    "shared_features": [],
+    "rule_features_file": "data/processed/urinalysis_rule_features.csv",
+    "rule_feature_columns": [
+      "urine_glucose_status",
+      "urine_protein_status",
+      "bacteria_status",
+      "urine_ph_value",
+      "urine_ph_outside_typical_range",
+      "specific_gravity_value",
+      "specific_gravity_outside_typical_range",
+      "positive_dipstick_count"
+    ]
+  },
+  "maternal_feature_mapping_canonical_to_file_column": {
+    "age": "age",
+    "systolic_bp": "systolic_bp",
+    "diastolic_bp": "diastolic",
+    "blood_sugar": "bs",
+    "body_temperature": "body_temp",
+    "heart_rate": "heart_rate"
+  },
+  "range_violations": {},
+  "warning": "Prototype only; not clinically validated; healthcare professional review required."
+}
