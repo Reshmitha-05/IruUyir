@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard | IruUyir</title><link rel="stylesheet" href="shared/css/iruuyir.css"></head>
+<body class="bg-soft">
+<header class="navbar"><a class="brand" href="#"><div class="logo-placeholder sm">LOGO</div>IruUyir</a><nav><a class="active" href="#">Home</a></nav>
+<div class="user"><span id="nm"></span><button class="btn btn-secondary" id="lo">Logout</button></div></header>
+<main class="container"><div class="card"><h1>Healthcare worker dashboard</h1><p class="muted">Placeholder page. The healthcare-worker developer replaces this file.</p></div></main>
+<script src="config.js"></script><script src="shared/js/iruuyir.js"></script><script src="shared/js/auth.js"></script>
+<script>
+const s = IruAuth.require('doctor', 'doctor-login.html');
+if (s) { document.getElementById('nm').textContent = s.user.name; document.getElementById('lo').onclick = () => IruAuth.logout('doctor', 'doctor-login.html'); }
+</script></body></html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Healthcare Worker Login | IruUyir</title><link rel="stylesheet" href="shared/css/iruuyir.css"></head>
+<body class="login-page">
+<canvas id="iu-particles"></canvas>
+<main class="login-card">
+  <div class="login-head"><div class="logo-placeholder">LOGO<br>PLACEHOLDER</div><h1>IruUyir</h1><p class="muted small">Healthcare Worker login</p></div>
+  <form id="f" novalidate>
+    <div class="field"><label for="wid">Worker ID</label><input id="wid" class="input" autocomplete="username"></div>
+    <div class="field"><label for="pw">Password</label><input id="pw" type="password" class="input" autocomplete="current-password"></div>
+    <p class="field-error" id="err" role="alert"></p>
+    <div class="btn-row"><button type="button" class="btn btn-secondary" data-href="index.html">Back</button><button type="submit" class="btn btn-primary" id="go">Login</button></div>
+  </form>
+</main>
+<script src="config.js"></script><script src="shared/js/iruuyir.js"></script><script src="shared/js/auth.js"></script>
+<script>
+IruUyir.initLoginBackground();
+if (IruAuth.get('doctor')) location.replace('doctor-dashboard.html');
+document.getElementById('f').addEventListener('submit', async e => {
+  e.preventDefault();
+  const err = document.getElementById('err'), btn = document.getElementById('go'); err.textContent = '';
+  const body = {workerId:wid.value,password:pw.value};
+  if (Object.values(body).some(v => !v.trim())) { err.textContent = 'Fill in all fields.'; return; }
+  IruUyir.loading(btn, true);
+  try {
+    const r = await fetch(API_BASE_URL + '/api/auth/doctor/login', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.message || 'Login failed');
+    IruAuth.save('doctor', d.token, d.user);
+    IruUyir.go('doctor-dashboard.html');
+  } catch (x) {
+    err.textContent = x instanceof TypeError ? 'Cannot reach the server. Start it with: node server.js' : x.message;
+    IruUyir.loading(btn, false);
+  }
+});
+</script></body></html>

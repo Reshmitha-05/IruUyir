@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard | IruUyir</title><link rel="stylesheet" href="shared/css/iruuyir.css"></head>
+<body class="bg-soft">
+<header class="navbar">
+  <a class="brand" href="patient-dashboard.html"><div class="logo-placeholder sm">LOGO</div>IruUyir</a>
+  <nav><a class="active" href="patient-dashboard.html">Home</a><a href="#">Health Timeline</a><a href="#">Appointments</a><a href="#">Menstrual Cycle</a><a href="#">Handoff Summary</a></nav>
+  <div class="user"><button class="btn btn-danger" onclick="IruUyir.modal.open('sos')">SOS / I'm Coming to Hospital</button><span id="nm"></span><button class="btn btn-secondary" id="lo">Logout</button></div>
+</header>
+<main class="container stack">
+  <h1 id="wel">Welcome</h1>
+  <div class="card slide-up accent" id="score"><div class="spinner"></div></div>
+</main>
+<div class="modal-overlay" id="sos"><div class="modal"><h2>Pre-arrival notification</h2>
+  <p>Send an emergency pre-arrival notification to your healthcare facility?</p>
+  <div class="modal-actions"><button class="btn btn-secondary" data-modal-close>Cancel</button><button class="btn btn-primary" id="send">Send Notification</button></div></div></div>
+<script src="config.js"></script><script src="shared/js/iruuyir.js"></script><script src="shared/js/auth.js"></script>
+<script>
+const s = IruAuth.require('patient', 'patient-login.html');
+if (s) {
+  const id = s.user.id;
+  document.getElementById('nm').textContent = s.user.name;
+  document.getElementById('lo').onclick = () => IruAuth.logout('patient', 'patient-login.html');
+  IruAuth.api('patient', '/api/patients/' + id).then(p => {
+    document.getElementById('wel').textContent = 'Welcome, ' + p.name;
+    const lv = p.triage.toLowerCase();
+    document.getElementById('score').innerHTML = '<p class="muted small">Current Maternal Risk Score</p><p class="risk-score ' + lv + '">' + p.riskScore + '<small> / 100</small></p><p><span class="risk-badge ' + lv + '">' + p.triage + ' triage</span></p><p class="muted small">Last assessment: ' + p.lastAssessment + '</p>';
+    document.getElementById('send').onclick = async e => {
+      IruUyir.loading(e.target, true);
+      try {
+        await IruAuth.api('patient', '/api/patients/' + id + '/pre-arrival', {method:'POST', body: JSON.stringify({patientId:id, patientName:p.name, riskScore:p.riskScore, triage:p.triage, lastAssessment:p.lastAssessment, timestamp:new Date().toISOString()})});
+        IruUyir.modal.close('sos'); IruUyir.toast('Pre-arrival notification sent.', 'Your healthcare facility has been notified.', 'success');
+      } catch (x) { IruUyir.toast('Could not send', 'Please try again or call your facility.', 'error'); }
+      IruUyir.loading(e.target, false);
+    };
+  }).catch(() => document.getElementById('score').innerHTML = '<p>Could not load your record.</p>');
+}
+</script></body></html>

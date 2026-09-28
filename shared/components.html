@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IruUyir Component Reference</title><link rel="stylesheet" href="css/iruuyir.css"></head>
+<body class="bg-soft">
+<header class="navbar">
+  <a class="brand" href="../index.html"><div class="logo-placeholder sm">LOGO</div>IruUyir</a>
+  <nav><a class="active" href="#">Home</a><a href="#">Health Timeline</a><a href="#">Appointments</a></nav>
+  <div class="user"><span>Patient name</span><button class="btn btn-secondary">Logout</button></div>
+</header>
+<main class="container stack">
+  <h1>Component reference</h1>
+  <div class="card slide-up"><div class="card-header"><h2>Risk badges and buttons</h2><span class="status-badge approved">Approved</span></div>
+    <div class="row"><span class="risk-badge high">High</span><span class="risk-badge medium">72 / 100 · Medium</span><span class="risk-badge low">Low</span>
+    <span class="status-badge pending">Pending</span><span class="status-badge completed">Completed</span></div>
+    <div class="row" style="margin-top:16px"><button class="btn btn-primary">Primary</button><button class="btn btn-secondary">Secondary</button><button class="btn btn-ghost">Ghost</button><button class="btn btn-danger" onclick="IruUyir.modal.open('m1')">Open modal</button><button class="btn btn-primary" onclick="IruUyir.toast('Saved','Changes saved.','success')">Toast</button></div>
+    <p class="risk-score medium" style="margin-top:16px">72<small> / 100</small></p></div>
+  <div class="card"><h2>Form and table</h2>
+    <div class="field"><label for="a">Patient ID</label><input id="a" class="input" placeholder="e.g. IU-1024"></div>
+    <div class="table-wrap"><table class="table"><thead><tr><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td>Systolic BP</td><td>120</td></tr></tbody></table></div></div>
+  <div class="card"><h2>Timeline and appointment card</h2>
+    <ol class="timeline"><li class="timeline-item medium"><div class="timeline-head" onclick="this.parentNode.classList.toggle('open')"><strong>Appointment 01</strong><span class="risk-badge medium">Medium</span></div><div class="timeline-body">Expanded details go here.</div></li></ol>
+    <div class="appt-card"><div class="appt-date">28<small>Sep</small></div><div class="appt-info"><h3>Antenatal checkup</h3><span class="muted small">10:30 AM</span></div><span class="status-badge upcoming">Upcoming</span></div>
+    <div class="spinner"></div></div>
+</main>
+<div class="modal-overlay" id="m1"><div class="modal"><h2>Confirm action</h2><p class="muted">Modal body text.</p><div class="modal-actions"><button class="btn btn-secondary" data-modal-close>Cancel</button><button class="btn btn-primary" data-modal-close>Confirm</button></div></div></div>
+<script src="js/iruuyir.js"></script></body></html>
